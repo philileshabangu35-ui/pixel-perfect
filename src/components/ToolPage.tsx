@@ -68,12 +68,12 @@ export function ToolPage({ tool, title, inputLabel, placeholder, outputLabel, ac
         const { done, value } = await reader.read();
         if (done) break;
         text += dec.decode(value, { stream: true });
-        setOutput(text.split(ERR)[0]);
+        setOutput(text.split(ERR)[0] ?? "");
       }
       if (text.includes(ERR)) {
         const [ok, msg] = text.split(ERR);
-        setOutput(ok.trim());
-        throw new Error(msg);
+        setOutput((ok ?? "").trim());
+        throw new Error(msg ?? "Error");
       }
       if (!text.trim()) throw new Error("No response was returned. Please try again.");
       addHistory({ tool, input, output: text.trim(), ...(tool === "email" ? { tone, recipient } : {}) });

@@ -31,7 +31,7 @@ export async function handleGenerate(request: Request) {
   if (!input) return Response.json({ error: "Please enter some text first." }, { status: 400 });
   if (input.length > 20000) return Response.json({ error: "Input is too long (20,000 characters max)." }, { status: 400 });
 
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env['LOVABLE_API_KEY'];
   if (!apiKey) return Response.json({ error: "AI is not configured." }, { status: 500 });
 
   let prompt = input;
