@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- AI calls go through `src/routes/api/generate.ts` → `src/lib/ai.server.ts` (Lovable AI Gateway, streamed plain text); prompts and keys stay server-side so the browser never sees them.
+- Request history lives in browser localStorage (`src/lib/history.ts`); no backend database is used yet.
