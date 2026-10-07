@@ -10,11 +10,47 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EmailRouteImport } from './routes/email'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SummarizerRouteImport } from './routes/summarizer'
 import { Route as ApiGenerateRouteImport } from './routes/api/generate'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SummarizerRoute = SummarizerRouteImport.update({
+  id: '/summarizer',
+  path: '/summarizer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGenerateRoute = ApiGenerateRouteImport.update({
@@ -25,27 +61,76 @@ const ApiGenerateRoute = ApiGenerateRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/email': typeof EmailRoute
+  '/history': typeof HistoryRoute
+  '/insights': typeof InsightsRoute
+  '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
+  '/summarizer': typeof SummarizerRoute
   '/api/generate': typeof ApiGenerateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/email': typeof EmailRoute
+  '/history': typeof HistoryRoute
+  '/insights': typeof InsightsRoute
+  '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
+  '/summarizer': typeof SummarizerRoute
   '/api/generate': typeof ApiGenerateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/email': typeof EmailRoute
+  '/history': typeof HistoryRoute
+  '/insights': typeof InsightsRoute
+  '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
+  '/summarizer': typeof SummarizerRoute
   '/api/generate': typeof ApiGenerateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/generate'
+  fullPaths:
+    | '/'
+    | '/email'
+    | '/history'
+    | '/insights'
+    | '/research'
+    | '/settings'
+    | '/summarizer'
+    | '/api/generate'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/generate'
-  id: '__root__' | '/' | '/api/generate'
+  to:
+    | '/'
+    | '/email'
+    | '/history'
+    | '/insights'
+    | '/research'
+    | '/settings'
+    | '/summarizer'
+    | '/api/generate'
+  id:
+    | '__root__'
+    | '/'
+    | '/email'
+    | '/history'
+    | '/insights'
+    | '/research'
+    | '/settings'
+    | '/summarizer'
+    | '/api/generate'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EmailRoute: typeof EmailRoute
+  HistoryRoute: typeof HistoryRoute
+  InsightsRoute: typeof InsightsRoute
+  ResearchRoute: typeof ResearchRoute
+  SettingsRoute: typeof SettingsRoute
+  SummarizerRoute: typeof SummarizerRoute
   ApiGenerateRoute: typeof ApiGenerateRoute
 }
 
@@ -56,6 +141,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/summarizer': {
+      id: '/summarizer'
+      path: '/summarizer'
+      fullPath: '/summarizer'
+      preLoaderRoute: typeof SummarizerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/generate': {
@@ -70,6 +197,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EmailRoute: EmailRoute,
+  HistoryRoute: HistoryRoute,
+  InsightsRoute: InsightsRoute,
+  ResearchRoute: ResearchRoute,
+  SettingsRoute: SettingsRoute,
+  SummarizerRoute: SummarizerRoute,
   ApiGenerateRoute: ApiGenerateRoute,
 }
 export const routeTree = rootRouteImport
